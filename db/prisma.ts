@@ -2,7 +2,7 @@
 import { neonConfig } from '@neondatabase/serverless';
 import { PrismaNeon } from '@prisma/adapter-neon';
 import ws from 'ws';
-import { PrismaClient } from '../lib/generated/prisma';
+import { PrismaClient, Product } from '../lib/generated/prisma';
 
 // Sets up WebSocket connections, which enables Neon to use WebSocket communication.
 neonConfig.webSocketConstructor = ws;
@@ -17,18 +17,18 @@ const adapter = new PrismaNeon({ connectionString });
 // Extends the PrismaClient with a custom result transformer to convert the price and rating fields to strings.
 export const prisma = new PrismaClient({ adapter }).$extends({
   result: {
-    // product: {
-    //   price: {
-    //     compute(product: Product) {
-    //       return product.price.toString();
-    //     },
-    //   },
-    //   rating: {
-    //     compute(product: Product) {
-    //       return product.rating.toString();
-    //     },
-    //   },
-    // },
+    product: {
+      price: {
+        compute(product: Product) {
+          return product.price.toString();
+        },
+      },
+      rating: {
+        compute(product: Product) {
+          return product.rating.toString();
+        },
+      },
+    },
     // cart: {
     //   itemsPrice: {
     //     needs: { itemsPrice: true },

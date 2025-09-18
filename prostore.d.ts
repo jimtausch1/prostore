@@ -3,7 +3,7 @@ import { z } from 'zod';
 
 type BaseProduct = {
   id?: string;
-  rating: number;
+  rating: string;
   numReviews: number;
   createdAt?: Date;
 };
