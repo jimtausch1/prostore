@@ -1,3 +1,4 @@
+import { Product } from '@/prostore';
 import ProductCard from './product-card';
 
 interface ProductListProps {
