@@ -8,6 +8,7 @@ import {
 } from '@/components/ui/sheet';
 import { EllipsisVertical, Link, ShoppingCart } from 'lucide-react';
 import ModeToggle from './mode-toggle';
+import UserButton from './user-button';
 
 export default function Menu() {
   return (
@@ -19,7 +20,7 @@ export default function Menu() {
             <ShoppingCart /> Cart
           </Link>
         </Button>
-        {/* <UserButton /> */}
+        <UserButton />
       </nav>
       <nav className="md:hidden">
         <Sheet>
