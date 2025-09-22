@@ -1,4 +1,10 @@
-import { insertProductSchema } from '@/lib/validators';
+import {
+  cartItemSchema,
+  insertCartSchema,
+  insertOrderItemSchema,
+  insertProductSchema,
+  shippingAddressSchema,
+} from '@/lib/validators';
 import { DefaultSession } from 'next-auth';
 import { z } from 'zod';
 
@@ -14,6 +20,10 @@ type BaseProduct = {
 };
 
 export type Product = z.infer<typeof insertProductSchema> & BaseProduct;
+export type Cart = z.infer<typeof insertCartSchema>;
+export type CartItem = z.infer<typeof cartItemSchema>;
+export type ShippingAddress = z.infer<typeof shippingAddressSchema>;
+export type OrderItem = z.infer<typeof insertOrderItemSchema>;
 
 declare module 'next-auth/jwt' {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */

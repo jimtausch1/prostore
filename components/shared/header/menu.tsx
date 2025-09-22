@@ -6,7 +6,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { EllipsisVertical, Link, ShoppingCart } from 'lucide-react';
+import { EllipsisVertical, ShoppingCart } from 'lucide-react';
+import Link from 'next/link';
 import ModeToggle from './mode-toggle';
 import UserButton from './user-button';
 

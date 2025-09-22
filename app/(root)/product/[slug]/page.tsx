@@ -1,8 +1,12 @@
+import { auth } from '@/auth';
+import AddToCart from '@/components/shared/product/add-to-cart';
 import ProductImages from '@/components/shared/product/product-images';
 import ProductPrice from '@/components/shared/product/product-price';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
+import { getMyCart } from '@/lib/actions/cart.actions';
 import { getProductBySlug } from '@/lib/actions/product.actions';
+import { Cart } from '@/prostore';
 import { notFound } from 'next/navigation';
 
 interface ProductDetailsPageProps {
@@ -15,10 +19,10 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
   const product = await getProductBySlug(slug);
   if (!product) notFound();
 
-  // const session = await auth();
-  // const userId = session?.user?.id;
+  const session = await auth();
+  const userId = session?.user?.id;
 
-  // const cart = await getMyCart();
+  const cart = (await getMyCart()) ?? ({} as Cart);
 
   return (
     <>
@@ -69,7 +73,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                 </div>
                 {product.stock > 0 && (
                   <div className="flex-center">
-                    {/* <AddToCart
+                    <AddToCart
                       cart={cart}
                       item={{
                         productId: product.id,
@@ -79,7 +83,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
                         qty: 1,
                         image: product.images![0],
                       }}
-                    /> */}
+                    />
                   </div>
                 )}
               </CardContent>
