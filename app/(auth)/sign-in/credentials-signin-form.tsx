@@ -1,10 +1,10 @@
 'use client';
 
+import { signInWithCredentials } from '@/actions/user.actions';
+import { signInDefaultValues } from '@/app/constants';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { signInWithCredentials } from '@/lib/actions/user.actions';
-import { signInDefaultValues } from '@/lib/constants';
 import { Link } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { useActionState } from 'react';

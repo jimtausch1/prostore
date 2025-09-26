@@ -5,8 +5,14 @@ import { prisma } from '@/db/prisma';
 import { ShippingAddress } from '@/prostore';
 import { hashSync } from 'bcrypt-ts-edge';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
-import { formatError } from '../utils';
-import { shippingAddressSchema, signInFormSchema, signUpFormSchema } from '../validators';
+import z from 'zod';
+import { formatError } from '../lib/utils';
+import {
+  paymentMethodSchema,
+  shippingAddressSchema,
+  signInFormSchema,
+  signUpFormSchema,
+} from '../lib/validators';
 
 // Sign in the user with credentials
 export async function signInWithCredentials(prevState: unknown, formData: FormData) {
@@ -112,33 +118,31 @@ export async function updateUserAddress(data: ShippingAddress) {
   }
 }
 
-// // Update user's payment method
-// export async function updateUserPaymentMethod(
-//   data: z.infer<typeof paymentMethodSchema>
-// ) {
-//   try {
-//     const session = await auth();
-//     const currentUser = await prisma.user.findFirst({
-//       where: { id: session?.user?.id },
-//     });
+// Update user's payment method
+export async function updateUserPaymentMethod(data: z.infer<typeof paymentMethodSchema>) {
+  try {
+    const session = await auth();
+    const currentUser = await prisma.user.findFirst({
+      where: { id: session?.user?.id },
+    });
 
-//     if (!currentUser) throw new Error('User not found');
+    if (!currentUser) throw new Error('User not found');
 
-//     const paymentMethod = paymentMethodSchema.parse(data);
+    const paymentMethod = paymentMethodSchema.parse(data);
 
-//     await prisma.user.update({
-//       where: { id: currentUser.id },
-//       data: { paymentMethod: paymentMethod.type },
-//     });
+    await prisma.user.update({
+      where: { id: currentUser.id },
+      data: { paymentMethod: paymentMethod.type },
+    });
 
-//     return {
-//       success: true,
-//       message: 'User updated successfully',
-//     };
-//   } catch (error) {
-//     return { success: false, message: formatError(error) };
-//   }
-// }
+    return {
+      success: true,
+      message: 'User updated successfully',
+    };
+  } catch (error) {
+    return { success: false, message: formatError(error) };
+  }
+}
 
 // // Update the user profile
 // export async function updateProfile(user: { name: string; email: string }) {

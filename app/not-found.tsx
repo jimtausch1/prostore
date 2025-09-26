@@ -1,5 +1,5 @@
+import { APP_NAME } from '@/app/constants';
 import { Button } from '@/components/ui/button';
-import { APP_NAME } from '@/lib/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -3,10 +3,10 @@
 import { prisma } from '@/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from '../constants';
-import { Prisma } from '../generated/prisma';
-import { convertToPlainObject, formatError } from '../utils';
-import { insertProductSchema, updateProductSchema } from '../validators';
+import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from '../app/constants';
+import { Prisma } from '../lib/generated/prisma';
+import { convertToPlainObject, formatError } from '../lib/utils';
+import { insertProductSchema, updateProductSchema } from '../lib/validators';
 
 // Get latest products
 export async function getLatestProducts() {

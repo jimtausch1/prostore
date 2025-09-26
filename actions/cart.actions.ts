@@ -7,9 +7,9 @@ import { CartItem } from '@/prostore';
 import { revalidatePath } from 'next/cache';
 import { cookies } from 'next/headers';
 import { formatError } from 'zod';
-import { Prisma } from '../generated/prisma';
-import { convertToPlainObject, round2 } from '../utils';
-import { cartItemSchema, insertCartSchema } from '../validators';
+import { Prisma } from '../lib/generated/prisma';
+import { convertToPlainObject, round2 } from '../lib/utils';
+import { cartItemSchema, insertCartSchema } from '../lib/validators';
 
 // Calculate cart prices
 const calcPrice = (items: CartItem[]) => {

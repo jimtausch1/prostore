@@ -1,4 +1,4 @@
-import { APP_NAME } from '@/lib/constants';
+import { APP_NAME } from '@/app/constants';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

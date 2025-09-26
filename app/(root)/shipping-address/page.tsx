@@ -1,7 +1,7 @@
+import { getMyCart } from '@/actions/cart.actions';
+import { getUserById } from '@/actions/user.actions';
 import { auth } from '@/auth';
 import CheckoutSteps from '@/components/shared/checkout-steps';
-import { getMyCart } from '@/lib/actions/cart.actions';
-import { getUserById } from '@/lib/actions/user.actions';
 import { ShippingAddress } from '@/prostore';
 import { redirect } from 'next/navigation';
 import ShippingAddressForm from './shipping-address-form';

@@ -1,7 +1,7 @@
 'use client';
 
+import { addItemToCart, removeItemFromCart } from '@/actions/cart.actions';
 import { Button } from '@/components/ui/button';
-import { addItemToCart, removeItemFromCart } from '@/lib/actions/cart.actions';
 import { Cart, CartItem } from '@/prostore';
 import { Loader, Minus, Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';

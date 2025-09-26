@@ -1,5 +1,6 @@
 'use client';
 
+import { addItemToCart, removeItemFromCart } from '@/actions/cart.actions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -10,7 +11,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { addItemToCart, removeItemFromCart } from '@/lib/actions/cart.actions';
 import { formatCurrency } from '@/lib/utils';
 import { Cart, CartItem } from '@/prostore';
 import { ArrowRight, Loader, Minus, Plus } from 'lucide-react';

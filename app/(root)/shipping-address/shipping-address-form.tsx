@@ -1,5 +1,7 @@
 'use client';
 
+import { updateUserAddress } from '@/actions/user.actions';
+import { shippingAddressDefaultValues } from '@/app/constants';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -10,8 +12,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { updateUserAddress } from '@/lib/actions/user.actions';
-import { shippingAddressDefaultValues } from '@/lib/constants';
 import { shippingAddressSchema } from '@/lib/validators';
 import { ShippingAddress } from '@/prostore';
 import { zodResolver } from '@hookform/resolvers/zod';

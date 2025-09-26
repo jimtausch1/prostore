@@ -1,6 +1,6 @@
+import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from '@/app/constants';
 import '@/assets/styles/globals.css';
 import { Toaster } from '@/components/ui/sonner';
-import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from '@/lib/constants';
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Inter } from 'next/font/google';

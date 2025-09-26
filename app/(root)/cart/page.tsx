@@ -1,4 +1,4 @@
-import { getMyCart } from '@/lib/actions/cart.actions';
+import { getMyCart } from '@/actions/cart.actions';
 import { Cart } from '@/prostore';
 import CartTable from './cart-table';
 
