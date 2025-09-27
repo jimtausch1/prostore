@@ -6,13 +6,14 @@ import { ShippingAddress } from '@/prostore';
 import { hashSync } from 'bcrypt-ts-edge';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
 import z from 'zod';
-import { formatError } from '../lib/utils';
+import { formatError } from '../app/utils';
 import {
   paymentMethodSchema,
   shippingAddressSchema,
   signInFormSchema,
   signUpFormSchema,
 } from '../lib/validators';
+import { getMyCart } from './cart.actions';
 
 // Sign in the user with credentials
 export async function signInWithCredentials(prevState: unknown, formData: FormData) {
@@ -36,13 +37,13 @@ export async function signInWithCredentials(prevState: unknown, formData: FormDa
 // Sign user out
 export async function signOutUser() {
   // get current users cart and delete it so it does not persist to next user
-  // const currentCart = await getMyCart();
+  const currentCart = await getMyCart();
 
-  // if (currentCart?.id) {
-  //   await prisma.cart.delete({ where: { id: currentCart.id } });
-  // } else {
-  //   console.warn('No cart found for deletion.');
-  // }
+  if (currentCart?.id) {
+    await prisma.cart.delete({ where: { id: currentCart.id } });
+  } else {
+    console.warn('No cart found for deletion.');
+  }
   await signOut();
 }
 
@@ -144,36 +145,36 @@ export async function updateUserPaymentMethod(data: z.infer<typeof paymentMethod
   }
 }
 
-// // Update the user profile
-// export async function updateProfile(user: { name: string; email: string }) {
-//   try {
-//     const session = await auth();
+// Update the user profile
+export async function updateProfile(user: { name: string; email: string }) {
+  try {
+    const session = await auth();
 
-//     const currentUser = await prisma.user.findFirst({
-//       where: {
-//         id: session?.user?.id,
-//       },
-//     });
+    const currentUser = await prisma.user.findFirst({
+      where: {
+        id: session?.user?.id,
+      },
+    });
 
-//     if (!currentUser) throw new Error('User not found');
+    if (!currentUser) throw new Error('User not found');
 
-//     await prisma.user.update({
-//       where: {
-//         id: currentUser.id,
-//       },
-//       data: {
-//         name: user.name,
-//       },
-//     });
+    await prisma.user.update({
+      where: {
+        id: currentUser.id,
+      },
+      data: {
+        name: user.name,
+      },
+    });
 
-//     return {
-//       success: true,
-//       message: 'User updated successfully',
-//     };
-//   } catch (error) {
-//     return { success: false, message: formatError(error) };
-//   }
-// }
+    return {
+      success: true,
+      message: 'User updated successfully',
+    };
+  } catch (error) {
+    return { success: false, message: formatError(error) };
+  }
+}
 
 // // Get all the users
 // export async function getAllUsers({

@@ -1,6 +1,7 @@
 'use client';
 
 import { addItemToCart, removeItemFromCart } from '@/actions/cart.actions';
+import { formatCurrency } from '@/app/utils';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import {
@@ -11,7 +12,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { formatCurrency } from '@/lib/utils';
 import { Cart, CartItem } from '@/prostore';
 import { ArrowRight, Loader, Minus, Plus } from 'lucide-react';
 import Image from 'next/image';

@@ -1,5 +1,6 @@
 import { getMyCart } from '@/actions/cart.actions';
 import { getUserById } from '@/actions/user.actions';
+import { formatCurrency } from '@/app/utils';
 import { auth } from '@/auth';
 import CheckoutSteps from '@/components/shared/checkout-steps';
 import { Button } from '@/components/ui/button';
@@ -12,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { formatCurrency } from '@/lib/utils';
 import { ShippingAddress } from '@/prostore';
 import Image from 'next/image';
 import Link from 'next/link';

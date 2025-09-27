@@ -4,8 +4,8 @@ import { prisma } from '@/db/prisma';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from '../app/constants';
+import { convertToPlainObject, formatError } from '../app/utils';
 import { Prisma } from '../lib/generated/prisma';
-import { convertToPlainObject, formatError } from '../lib/utils';
 import { insertProductSchema, updateProductSchema } from '../lib/validators';
 
 // Get latest products
