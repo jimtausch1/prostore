@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { paymentMethodSchema } from '@/lib/validators';
+import { paymentMethodSchema } from '@/prisma/validators';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight, Loader } from 'lucide-react';
 import { useRouter } from 'next/navigation';

@@ -9,7 +9,7 @@ import { cookies } from 'next/headers';
 import { formatError } from 'zod';
 import { convertToPlainObject, round2 } from '../app/utils';
 import { Prisma } from '../lib/generated/prisma';
-import { cartItemSchema, insertCartSchema } from '../lib/validators';
+import { cartItemSchema, insertCartSchema } from '../prisma/validators';
 
 // Calculate cart prices
 const calcPrice = (items: CartItem[]) => {

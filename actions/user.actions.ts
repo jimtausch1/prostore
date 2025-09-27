@@ -12,7 +12,7 @@ import {
   shippingAddressSchema,
   signInFormSchema,
   signUpFormSchema,
-} from '../lib/validators';
+} from '../prisma/validators';
 import { getMyCart } from './cart.actions';
 
 // Sign in the user with credentials

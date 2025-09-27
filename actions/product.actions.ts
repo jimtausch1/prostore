@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { LATEST_PRODUCTS_LIMIT, PAGE_SIZE } from '../app/constants';
 import { convertToPlainObject, formatError } from '../app/utils';
 import { Prisma } from '../lib/generated/prisma';
-import { insertProductSchema, updateProductSchema } from '../lib/validators';
+import { insertProductSchema, updateProductSchema } from '../prisma/validators';
 
 // Get latest products
 export async function getLatestProducts() {

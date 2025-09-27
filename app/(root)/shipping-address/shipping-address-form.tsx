@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { shippingAddressSchema } from '@/lib/validators';
+import { shippingAddressSchema } from '@/prisma/validators';
 import { ShippingAddress } from '@/prostore';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight, Loader } from 'lucide-react';

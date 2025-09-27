@@ -6,7 +6,7 @@ import {
   insertProductSchema,
   paymentResultSchema,
   shippingAddressSchema,
-} from '@/lib/validators';
+} from '@/prisma/validators';
 import { DefaultSession } from 'next-auth';
 import { z } from 'zod';
 
