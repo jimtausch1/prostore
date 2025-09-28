@@ -14,19 +14,19 @@ import 'next-auth';
 
 import 'next-auth/jwt';
 
-type BaseProduct = {
-  id?: string;
+export type Product = z.infer<typeof insertProductSchema> & {
+  id: string;
   rating: string;
   numReviews: number;
-  createdAt?: Date;
+  createdAt: Date;
 };
 
-export type Product = z.infer<typeof insertProductSchema> & BaseProduct;
 export type Cart = z.infer<typeof insertCartSchema>;
 export type CartItem = z.infer<typeof cartItemSchema>;
 export type ShippingAddress = z.infer<typeof shippingAddressSchema>;
 export type PaymentResult = z.infer<typeof paymentResultSchema>;
 export type OrderItem = z.infer<typeof insertOrderItemSchema>;
+
 export type Order = z.infer<typeof insertOrderSchema> & {
   id: string;
   createdAt: Date;
